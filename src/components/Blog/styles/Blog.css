@@ -1,0 +1,14 @@
+.blogContainer {
+    margin-top: 30px;
+    display: flex;
+    width: 600px;
+    gap: 30px;
+}
+
+.blogContainer p {
+    margin-top: 8px;
+}
+
+.blogContainer h3 {
+    margin-bottom: 8px;
+}
