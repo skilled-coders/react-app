@@ -5,6 +5,10 @@
     gap: 30px;
 }
 
+.blogContainer .details {
+    min-width: 430px;
+}
+
 .blogContainer p {
     margin-top: 8px;
 }
