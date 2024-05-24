@@ -1,6 +1,6 @@
 import "./App.css";
 import Blog from "./components/Blog"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [blogs, setBlogs] = useState([
@@ -27,32 +27,48 @@ function App() {
     }
   }
 
-  function handleClickMe(display) {
-    setDisplay(!display);
-  }
-
-  const [display, setDisplay] = useState(true);
-
   function handleAddBlog() {
     const newBlog = generateNewBlog();
     setBlogs([...blogs, newBlog]);
   }
+
+  function handleRemoveBlog(id) {
+    const newArray = [];
+    blogs.forEach((blog) => {
+      if (blog.id !== id) {
+        newArray.push(blog);
+      }
+    });
+
+    setBlogs(newArray);
+  }
+
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+
+  useEffect(() => {
+    console.log("UseEffect got triggered");
+  }, [x, y])
 
   return (
     <>
       <h2>My Blogs</h2>
       <button onClick={() => handleAddBlog()}>Add Blog</button>
       {blogs.map((blog) => (
-        <Blog
-          key={blog.id}
-          title={blog.title}
-          description={blog.description}
-          imgUrl={blog.imgUrl}
-          show={blog.id === 2 ? (display ? true : false) : true}
-        />
+        <>
+          <Blog
+            key={blog.id}
+            title={blog.title}
+            description={blog.description}
+            imgUrl={blog.imgUrl}
+            show={true}
+          />
+          <button onClick={() => handleRemoveBlog(blog.id)}>{`Remove Blog ${blog.id}`}</button>
+        </>
       ))}
 
-      <button onClick={() => handleClickMe(display)}>{display ? "Hide" : "Show"} second blog</button>
+      <button onClick={() => setX(x === 1 ? 0 : 1)}>Update X</button>
+      <button onClick={() => setY(y === 1 ? 0 : 1)}>Update Y</button>
     </>
   )
 }
