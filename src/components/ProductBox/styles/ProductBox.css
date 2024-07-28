@@ -1,0 +1,7 @@
+.product-box-wrapper {
+    width: 270px;
+    height: 228px;
+    padding: 20px;
+    box-shadow: 0 0px 30px -22px #000;
+    border-radius: 20px;
+}
