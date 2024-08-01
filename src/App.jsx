@@ -28,7 +28,13 @@ function App() {
 			title: "My Third Blog",
 			details: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur."
 		}
-	])
+	]);
+
+	const secondClickHandler = (e) => {
+		for (let index = 0; index < 10; index++) {
+			console.log(index, e)
+		}
+	}
 
 	return (
 		<>
@@ -37,6 +43,7 @@ function App() {
 			<h5>{user}</h5>
 			<h6>{age}</h6>
 			<button onClick={(e) => clickHandler(e, "Yash", 29)}>Click Me</button>
+			<button onClick={secondClickHandler}>Click Me</button>
 			<div className="body">
 				<BlogList blogs={blogs} name={user} aayu={age} />
 			</div>
