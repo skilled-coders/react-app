@@ -1,0 +1,37 @@
+{
+    "blogs": [
+        {
+            "id": 1,
+            "title": "My First Blog",
+            "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
+            "author": "Pratham"
+        },
+        {
+            "id": 2,
+            "title": "My Second Blog",
+            "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
+            "author": "Jatin"
+        },
+        {
+            "id": 3,
+            "title": "My Third Blog",
+            "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
+            "author": "Bharat"
+        }
+    ],
+    "comments": [
+        {
+            "id": "1",
+            "text": "a comment about post 1",
+            "postId": "1"
+        },
+        {
+            "id": "2",
+            "text": "another comment about post 1",
+            "postId": "1"
+        }
+    ],
+    "profile": {
+        "name": "typicode"
+    }
+}
