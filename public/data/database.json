@@ -19,6 +19,26 @@
             "author": "Bharat"
         }
     ],
+    "oldestBlogs": [
+        {
+            "id": 1,
+            "title": "My First Old Blog",
+            "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
+            "date": "03/08/2024"
+        },
+        {
+            "id": 2,
+            "title": "My Second Old Blog",
+            "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
+            "date": "03/08/2024"
+        },
+        {
+            "id": 3,
+            "title": "My Third Old Blog",
+            "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
+            "date": "03/08/2024"
+        }
+    ],
     "comments": [
         {
             "id": "1",
@@ -32,6 +52,13 @@
         }
     ],
     "profile": {
-        "name": "typicode"
+        "name": "Yash Patil",
+        "age": 29
+    },
+    "college": {
+        "name": "Dr. BATU",
+        "place": "Lonere",
+        "startYear": 2012,
+        "endYear": 2016
     }
 }

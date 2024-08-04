@@ -3,7 +3,7 @@ function BlogList({ blogs, title }) {
         <div className="blogListContainer">
             <h2>{title}</h2>
             {
-                blogs.map((blog) => {
+                blogs && blogs.length && blogs.map((blog) => {
                     // let author = "";
                     // if (blog.author) {
                     //     author = `- ${blog.author}`

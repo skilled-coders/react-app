@@ -1,92 +1,55 @@
-import { useState, useEffect } from 'react';
 import './App.css'
 import Header from './components/Header'
 import BlogList from './components/BlogList';
+import useAPIRequest from './custom-hooks/useAPIRequest';
 
 function App() {
-	const [user, setUser] = useState("Bharat"); // ES6 - destructuring
-	const [age, setAge] = useState(20);
+	const {
+		isPending: blogsIsPending,
+		data: blogs,
+		error: blogsError
+	} = useAPIRequest({ url: "http://localhost:3000/blogs", timeout: 5 }); // 5
 
-	const [counter, setCounter] = useState(0);
+	const {
+		isPending: oldestBlogIsPending,
+		data: oldestBlogs,
+		error: oldestBlogsError
+	} = useAPIRequest({ url: "http://localhost:3000/oldestBlogs", timeout: 10 }); // 10
 
-	const clickHandler = (event, name, age) => {
-		setUser(name);
-		setAge(age)
-	}
+	const {
+		data: profile,
+		error: profileError,
+	} = useAPIRequest({ url: "http://localhost:3000/profile", timeout: 1 });
 
-	const [blogs, setBlogs] = useState([
-		{
-			id: 1,
-			title: "My First Blog",
-			details: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
-			author: "Pratham"
-		},
-		{
-			id: 2,
-			title: "My Second Blog",
-			details: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
-			author: "Jatin"
-		},
-		{
-			id: 3,
-			title: "My Third Blog",
-			details: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
-			author: "Bharat"
-		}
-	]);
+	const {
+		data: college,
+		error: collegeError,
+	} = useAPIRequest({ url: "http://localhost:3000/college", timeout: 3 });
 
-	const [oldestBlogs, setOldestBlogs] = useState([
-		{
-			id: 1,
-			title: "My First Old Blog",
-			details: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
-			date: new Date().toDateString()
-		},
-		{
-			id: 2,
-			title: "My Second Old Blog",
-			details: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
-			date: new Date().toDateString()
-		},
-		{
-			id: 3,
-			title: "My Third Old Blog",
-			details: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque distinctio itaque similique? Minus est cum temporibus molestias, amet asperiores facilis. Temporibus quidem blanditiis velit explicabo accusamus iusto et qui consequuntur.",
-			date: new Date().toDateString()
-		}
-	]);
-
-	const secondClickHandler = (e) => {
-		setCounter(counter + 1);
-	}
-
-	// Triggers after each re-render
-	useEffect(() => {
-		console.log("Use Effect got triggered");
-	});
-
-	// Triggers only when we refresh the page / component get rendered for the first time
-	useEffect(() => {
-		console.log("Use Effect got triggered");
-	}, []);
-
-	// Triggers whenver the values of the dependency array changes
-	useEffect(() => {
-		console.log("Use Effect got triggered");
-	}, [counter, user]);
+	// I/O operations - node js - asynchrounous
+	// Processing / OS operations - java - threading - synchrounous
 
 	return (
 		<>
 			<Header />
-
-			<h5>{user}</h5>
-			<h6>{age}</h6>
-			<h2>{counter}</h2>
-			<button onClick={(e) => clickHandler(e, "Yash", 29)}>Click Me</button>
-			<button onClick={secondClickHandler}>Click Me</button>
 			<div className="body">
-				<BlogList blogs={blogs} title={"Recent Blogs"} />
-				<BlogList blogs={oldestBlogs} title={"Oldest Blogs"} /> {/* Reusability */}
+				{
+					profile && <p>Hello, {profile.name}. You are {profile.age} years old!!</p>
+				}
+
+				{
+					college && <p>You studied in {college.name}, {college.place}. From {college.startYear} to {college.endYear}</p>
+				}
+
+				{/* Condional rendering */}
+				{
+					blogsError ? (<h3 className='error'>Latest blogs: {error}</h3>) : blogsIsPending ? <h3>Loading...</h3> : <BlogList blogs={blogs} title={"Recent Blogs"} />
+				}
+				{/* Reusability */}
+				{
+					oldestBlogsError ? (<h3 className='error'>Oldest Blogs: {error}</h3>) : <BlogList blogs={oldestBlogs} title={"Oldest Blogs"} />
+				}
+
 			</div>
 		</>
 	)
