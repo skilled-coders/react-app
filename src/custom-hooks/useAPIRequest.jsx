@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function useAPIRequest({ timeout, url: route }) {
     const [isPending, setIsPending] = useState(false);
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {

@@ -1,3 +1,7 @@
 .error {
     color: red;
 }
+
+.inputWrapper {
+    padding: 20px;
+}
