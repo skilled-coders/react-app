@@ -7,8 +7,9 @@ function Header() {
             </div>
             <div>
                 <ul className='navigation'>
-                    <li>Home</li>
-                    <li>New Blog</li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blogs">Blogs</a></li>
+                    <li><a href="/new-blog">New Blog</a></li>
                 </ul>
             </div>
         </div>
