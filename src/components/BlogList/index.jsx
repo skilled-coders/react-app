@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function BlogList({ blogs, title }) {
     return (
         <div className="blogListContainer">
@@ -12,7 +14,9 @@ function BlogList({ blogs, title }) {
                     return (
                         <div key={blog.id} className="blogWrapper">
                             <div>
-                                <h3 className='montserrat-400'>{blog.title}</h3>
+                                <Link to={`/blogs/${blog.url}`}>
+                                    <h3 className='montserrat-400'>{blog.title}</h3>
+                                </Link>
                             </div>
                             <div>
                                 <p className='montserrat-300'>{blog.details}</p>

@@ -1,27 +1,30 @@
 import './App.css'
 import Header from './components/Header'
-import BlogList from './components/BlogList';
-import useAPIRequest from './custom-hooks/useAPIRequest';
-import { useState } from 'react';
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Blogs from './pages/Blogs';
 import NewBlog from './pages/NewBlog';
+
+import NotFound from './pages/NotFound';
+import SingleBlog from './pages/SingleBlog';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
 
 	return (
 		<>
-			<Header />
+			{/* VIRTUAL DOM */}
 			<BrowserRouter>
+				<Header />
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/blogs' element={<Blogs />} />
+					<Route path='/blogs/:url' element={<SingleBlog />} />
 					<Route path='/new-blog' element={<NewBlog />} />
-					<Route path="*" element={<h1>404: Not Found</h1>} />
+					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
+
 		</>
 	)
 }

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header() {
     const website = "Skilled Coders"
     return (
@@ -7,9 +9,9 @@ function Header() {
             </div>
             <div>
                 <ul className='navigation'>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/blogs">Blogs</a></li>
-                    <li><a href="/new-blog">New Blog</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/blogs">Blogs</Link></li>
+                    <li><Link to="/new-blog">New Blog</Link></li>
                 </ul>
             </div>
         </div>

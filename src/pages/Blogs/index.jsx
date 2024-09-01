@@ -6,7 +6,7 @@ function Blogs() {
         isPending: blogsIsPending,
         data: blogs,
         error: blogsError
-    } = useAPIRequest({ url: "http://localhost:3000/blogs", timeout: 5 }); // 5
+    } = useAPIRequest({ url: "http://localhost:3000/blogs", timeout: 0 }); // 5
 
     return (
         <>
